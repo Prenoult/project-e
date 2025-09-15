@@ -202,7 +202,7 @@ export default function Home() {
       <Card className="w-full max-w-sm h-fit">
         <CardHeader>
           <CardTitle>Résultat de la simulation</CardTitle>
-          <CardDescription>Basé sur les paramètre de votre trajet</CardDescription>
+          <CardDescription>Basé sur les paramètres de votre trajet</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-2">

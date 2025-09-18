@@ -2,7 +2,7 @@
 
 // packages
 import { useState } from "react";
-import { IconCash } from '@tabler/icons-react';
+import { IconExclamationCircle } from '@tabler/icons-react';
 
 // shadcn-ui components
 import { Input } from "@/components/ui/input"
@@ -28,6 +28,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 // data
 import { EV_VEHICLES } from "@/data/vehicles"
@@ -77,6 +78,8 @@ export default function Home() {
         energyConsumption
       )
       : null;
+
+  const batteryColor = batteryInfo?.remainingBatteryPercent > 20 ? "" : " text-yellow-600"
 
   return (
     <div className="flex justify-center gap-4 p-4">
@@ -229,7 +232,7 @@ export default function Home() {
                 <div className="text-sm text-muted-foreground">
                   Batterie restante
                 </div>
-                <div className="text-2xl font-semibold">
+                <div className={"text-2xl font-semibold" + batteryColor}>
                   {
                     batteryInfo?.remainingBatteryPercent.toLocaleString(
                       'fr-FR',
@@ -237,6 +240,16 @@ export default function Home() {
                     ) + " %"
                   }
                 </div>
+                {
+                  batteryInfo?.canCompleteTrip === false &&
+                  <Alert variant="destructive">
+                    <IconExclamationCircle />
+                    <AlertTitle>Attention</AlertTitle>
+                    <AlertDescription>
+                      <p>Recharge nécessaire pour effectuer ce trajet !</p>
+                    </AlertDescription>
+                  </Alert>
+                }
               </div>
             </>
           )}

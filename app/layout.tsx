@@ -2,17 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
 import { SidebarProvider, SidebarTrigger, SidebarInset } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { AppSidebar } from "@/components/app-sidebar"
+import Header from "@/components/ui/header"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +38,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   orientation="vertical"
                   className="mr-2 data-[orientation=vertical]:h-4"
                 />
-                <h1 className="text-base font-medium">Simulateur de trajet</h1>
+                <Header />
               </div>
             </header>
             <main>

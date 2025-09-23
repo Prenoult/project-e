@@ -1,4 +1,7 @@
-import { Route } from "lucide-react"
+"use client"
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 import {
   Sidebar,
@@ -10,22 +13,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-
-// Menu items.
-const items = [
-  {
-    title: "Simulateur de trajet",
-    url: "#",
-    icon: Route,
-  },
-  {
-    title: "À propos",
-    url: "#",
-    icon: Route,
-  }
-]
+import { APP_NAV_ITEMS } from "@/data/navigation"
 
 export function AppSidebar() {
+  const pathname = usePathname()
+
   return (
     <Sidebar variant="inset">
       <SidebarContent>
@@ -33,13 +25,13 @@ export function AppSidebar() {
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {APP_NAV_ITEMS.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton asChild isActive={pathname.includes(item.url)}>
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

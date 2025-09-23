@@ -42,7 +42,7 @@ import {
   EnergyConsumptionUnit
 } from "@/lib/calculator";
 
-export default function Home() {
+export default function Page() {
   const [distance, setDistance] = useState("");
   const [averageConsumption, setAverageConsumption] = useState("");
   const [costPerKWh, setCostPerKWh] = useState("");
@@ -255,6 +255,6 @@ export default function Home() {
           )}
         </CardContent>
       </Card>
-    </div >
+    </div>
   );
 }
